@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,6 @@ class PostController extends Controller
 
         $post = request()->user()->posts()->create($data['data']['attributes']);
 
-        return response([], 201);
+        return new PostResource($post);
     }
 }
