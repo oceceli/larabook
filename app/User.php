@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function getPath()
+    {
+        return url('/users/' . $this->id);
+    }
 }

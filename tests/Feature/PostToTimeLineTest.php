@@ -40,6 +40,13 @@ class PostToTimeLineTest extends TestCase
                     'post_id' => $post->id,
                     'attributes' => [
                         'body' => 'testing text',
+                        'posted_by' => [
+                            'data' => [
+                                'attributes' => [
+                                    'name' => $user->name,
+                                ],
+                            ],
+                        ],
                     ],
                 ],
                 'links' => [

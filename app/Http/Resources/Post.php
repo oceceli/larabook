@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use App\Http\Resources\Traits\DefaultResources;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PostResource extends JsonResource
+class Post extends JsonResource
 {
     // use DefaultResources;
 
@@ -17,10 +17,11 @@ class PostResource extends JsonResource
                 'post_id' => $this->id,
                 'attributes' => [
                     'body' => $this->body,
+                    'posted_by' => new UserResource($this->user),
                 ],
             ],
             'links' => [
-                'self' => url($this->getPath())
+                'self' => $this->getPath(),
             ],
         ];
     }
