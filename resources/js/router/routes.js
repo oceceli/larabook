@@ -1,16 +1,17 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Example from '../views/Example';
 
 Vue.use(VueRouter);
 
 export default new VueRouter({
-    mode: 'history',
-
     routes: [
         {
             path: '/',
             name: 'home',
-            // component: Start,
+            component: Example,
         }
-    ]
+    ],
+
+    mode: 'history',
 });
