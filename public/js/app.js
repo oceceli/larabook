@@ -2047,7 +2047,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['description', 'posted_by', 'posted_on']
+});
 
 /***/ }),
 
@@ -2089,12 +2117,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     NewPost: _components_NewPost__WEBPACK_IMPORTED_MODULE_0__["default"],
     Post: _components_Post__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      posts: null
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/posts').then(function (res) {
+      _this.posts = res.data;
+    })["catch"](function (error) {
+      console.log('Veri çekilirken bir hata oluştu: ' + error);
+    });
   }
 });
 
@@ -37979,56 +38023,176 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "bg-white w-2/3 rounded-md mt-6 shadow overflow-hidden" },
+    [
+      _c(
+        "div",
+        { staticClass: "flex items-center p-4", attrs: { id: "post-top" } },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "px-2 flex flex-col justify-center" }, [
+            _c("div", [_vm._v(" " + _vm._s(_vm.posted_by) + " ")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-sm text-gray-500" }, [
+              _vm._v(" " + _vm._s(_vm.posted_on))
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "w-full", attrs: { id: "post-body" } }, [
+        _c("div", { staticClass: "mb-2 pl-4" }, [
+          _c("p", [_vm._v(" " + _vm._s(_vm.description) + " ")])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w-full", attrs: { id: "post-footer" } }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "px-4 flex justify-between items-center py-2 text-sm text-gray-600"
+          },
+          [
+            _c("div", { staticClass: "flex items-center" }, [
+              _c(
+                "svg",
+                {
+                  staticClass: "fill-current mr-1 w-5 h-5",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 24 24"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M20.8 15.6c.4-.5.6-1.1.6-1.7 0-.6-.3-1.1-.5-1.4.3-.7.4-1.7-.5-2.6-.7-.6-1.8-.9-3.4-.8-1.1.1-2 .3-2.1.3-.2 0-.4.1-.7.1 0-.3 0-.9.5-2.4.6-1.8.6-3.1-.1-4.1-.7-1-1.8-1-2.1-1-.3 0-.6.1-.8.4-.5.5-.4 1.5-.4 2-.4 1.5-2 5.1-3.3 6.1l-.1.1c-.4.4-.6.8-.8 1.2-.2-.1-.5-.2-.8-.2H3.7c-1 0-1.7.8-1.7 1.7v6.8c0 1 .8 1.7 1.7 1.7h2.5c.4 0 .7-.1 1-.3l1 .1c.2 0 2.8.4 5.6.3.5 0 1 .1 1.4.1.7 0 1.4-.1 1.9-.2 1.3-.3 2.2-.8 2.6-1.6.3-.6.3-1.2.3-1.6.8-.8 1-1.6.9-2.2.1-.3 0-.6-.1-.8zM3.7 20.7c-.3 0-.6-.3-.6-.6v-6.8c0-.3.3-.6.6-.6h2.5c.3 0 .6.3.6.6v6.8c0 .3-.3.6-.6.6H3.7zm16.1-5.6c-.2.2-.2.5-.1.7 0 0 .2.3.2.7 0 .5-.2 1-.8 1.4-.2.2-.3.4-.2.6 0 0 .2.6-.1 1.1-.3.5-.9.9-1.8 1.1-.8.2-1.8.2-3 .1h-.1c-2.7.1-5.4-.3-5.4-.3H8v-7.2c0-.2 0-.4-.1-.5.1-.3.3-.9.8-1.4 1.9-1.5 3.7-6.5 3.8-6.7v-.3c-.1-.5 0-1 .1-1.2.2 0 .8.1 1.2.6.4.6.4 1.6-.1 3-.7 2.1-.7 3.2-.2 3.7.3.2.6.3.9.2.3-.1.5-.1.7-.1h.1c1.3-.3 3.6-.5 4.4.3.7.6.2 1.4.1 1.5-.2.2-.1.5.1.7 0 0 .4.4.5 1 0 .3-.2.6-.5 1z"
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("p", [_vm._v("You and 459 others")])
+            ]),
+            _vm._v(" "),
+            _vm._m(2)
+          ]
+        ),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "mr-2 flex justify-around items-center" }, [
+          _c("div", { staticClass: "w-2/3" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "w-full rounded-lg text-sm text-gray-700 p-2 m-1 focus:outline-none hover:bg-gray-300 flex items-center justify-center"
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current mr-1 w-5 h-5",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 24 24"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M20.8 15.6c.4-.5.6-1.1.6-1.7 0-.6-.3-1.1-.5-1.4.3-.7.4-1.7-.5-2.6-.7-.6-1.8-.9-3.4-.8-1.1.1-2 .3-2.1.3-.2 0-.4.1-.7.1 0-.3 0-.9.5-2.4.6-1.8.6-3.1-.1-4.1-.7-1-1.8-1-2.1-1-.3 0-.6.1-.8.4-.5.5-.4 1.5-.4 2-.4 1.5-2 5.1-3.3 6.1l-.1.1c-.4.4-.6.8-.8 1.2-.2-.1-.5-.2-.8-.2H3.7c-1 0-1.7.8-1.7 1.7v6.8c0 1 .8 1.7 1.7 1.7h2.5c.4 0 .7-.1 1-.3l1 .1c.2 0 2.8.4 5.6.3.5 0 1 .1 1.4.1.7 0 1.4-.1 1.9-.2 1.3-.3 2.2-.8 2.6-1.6.3-.6.3-1.2.3-1.6.8-.8 1-1.6.9-2.2.1-.3 0-.6-.1-.8zM3.7 20.7c-.3 0-.6-.3-.6-.6v-6.8c0-.3.3-.6.6-.6h2.5c.3 0 .6.3.6.6v6.8c0 .3-.3.6-.6.6H3.7zm16.1-5.6c-.2.2-.2.5-.1.7 0 0 .2.3.2.7 0 .5-.2 1-.8 1.4-.2.2-.3.4-.2.6 0 0 .2.6-.1 1.1-.3.5-.9.9-1.8 1.1-.8.2-1.8.2-3 .1h-.1c-2.7.1-5.4-.3-5.4-.3H8v-7.2c0-.2 0-.4-.1-.5.1-.3.3-.9.8-1.4 1.9-1.5 3.7-6.5 3.8-6.7v-.3c-.1-.5 0-1 .1-1.2.2 0 .8.1 1.2.6.4.6.4 1.6-.1 3-.7 2.1-.7 3.2-.2 3.7.3.2.6.3.9.2.3-.1.5-.1.7-.1h.1c1.3-.3 3.6-.5 4.4.3.7.6.2 1.4.1 1.5-.2.2-.1.5.1.7 0 0 .4.4.5 1 0 .3-.2.6-.5 1z"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c("p", [_vm._v("Like")])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/3" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "w-full rounded-lg text-sm text-gray-700 p-2 m-1 focus:outline-none hover:bg-gray-300 flex items-center justify-center"
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current mr-1 w-5 h-5",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 24 24"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M20.3 2H3.7C2 2 .6 3.4.6 5.2v10.1c0 1.7 1.4 3.1 3.1 3.1V23l6.6-4.6h9.9c1.7 0 3.1-1.4 3.1-3.1V5.2c.1-1.8-1.3-3.2-3-3.2zm1.8 13.3c0 1-.8 1.8-1.8 1.8H9.9L5 20.4V17H3.7c-1 0-1.8-.8-1.8-1.8v-10c0-1 .8-1.8 1.8-1.8h16.5c1 0 1.8.8 1.8 1.8v10.1zM6.7 6.7h10.6V8H6.7V6.7zm0 2.9h10.6v1.3H6.7V9.6zm0 2.8h10.6v1.3H6.7v-1.3z"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c("p", [_vm._v("Comment")])
+              ]
+            )
+          ])
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "bg-white w-2/3 rounded-md mt-6 shadow" }, [
-      _c(
-        "div",
-        { staticClass: "flex items-center p-4", attrs: { id: "post-top" } },
-        [
-          _c("div", [
-            _c("img", {
-              staticClass:
-                "w-10 h-10 object-cover rounded-full border-2 border-blue-600",
-              attrs: {
-                src:
-                  "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png",
-                alt: "post-image"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "px-2 flex flex-col justify-center" }, [
-            _c("div", [_vm._v("Tom Russo")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-sm text-gray-500" }, [
-              _vm._v("5 mins")
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "post" } }, [
-        _c("div", { staticClass: "mb-2 pl-4" }, [
-          _vm._v("\n            The comment for the post\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("img", {
-            attrs: {
-              src:
-                "https://www.markaev.com/Uploads/UrunResimleri/buyuk/a-post-ithal-beyaz-pelusmarkaevpost--pel-39ad.jpg",
-              alt: "post-image"
-            }
-          })
-        ])
-      ])
+    return _c("div", [
+      _c("img", {
+        staticClass:
+          "w-10 h-10 object-cover rounded-full border-2 border-blue-600",
+        attrs: {
+          src:
+            "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png",
+          alt: "post-image"
+        }
+      })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "post-photo" } }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://www.markaev.com/Uploads/UrunResimleri/buyuk/a-post-ithal-beyaz-pelusmarkaevpost--pel-39ad.jpg",
+          alt: "post-image"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("p", [_vm._v("182 Comments")])])
   }
 ]
 render._withStripped = true
@@ -38094,8 +38258,21 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "flex flex-col items-center py-4" },
-    [_c("NewPost"), _vm._v(" "), _c("Post"), _vm._v(" "), _c("Post")],
-    1
+    [
+      _c("NewPost"),
+      _vm._v(" "),
+      _vm._l(_vm.posts.data, function(post, index) {
+        return _c("Post", {
+          key: index,
+          attrs: {
+            description: post.data.attributes.body,
+            posted_by: post.data.attributes.posted_by.data.attributes.name,
+            posted_on: post.data.attributes.posted_on
+          }
+        })
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
