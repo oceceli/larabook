@@ -1980,7 +1980,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      user: null
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/auth-user').then(function (res) {
+      _this.user = res.data;
+    })["catch"](function (error) {
+      console.log('Veri çekilirken bir hata oluştu' + error);
+    });
+  }
+});
 
 /***/ }),
 
@@ -19990,7 +20005,7 @@ var render = function() {
             {
               staticClass:
                 "px-6 h-full border-white flex items-center focus:border-blue-600 border-b-2",
-              attrs: { to: "/" }
+              attrs: { to: "/users/" + _vm.user.data.user_id }
             },
             [
               _c("img", {
