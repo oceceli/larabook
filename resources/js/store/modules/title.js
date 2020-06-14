@@ -17,7 +17,7 @@ const actions = {
 
 const mutations = {
     setTitle(state, title) {
-        state.title = title + ' | Facebook';
+        state.title = title + ' | Larabook';
         document.title = state.title;
     }
 }

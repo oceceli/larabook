@@ -1910,6 +1910,7 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Nav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Nav */ "./resources/js/components/Nav.vue");
 /* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/Sidebar.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -1924,6 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1931,6 +1933,9 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Nav: _Nav__WEBPACK_IMPORTED_MODULE_0__["default"],
     Sidebar: _Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  created: function created() {
+    this.$store.dispatch('setPageTitle', this.$route.meta.title);
   },
   mounted: function mounted() {
     this.$store.dispatch('fetchAuthUser');
@@ -37324,7 +37329,7 @@ var actions = {
 };
 var mutations = {
   setTitle: function setTitle(state, title) {
-    state.title = title + ' | Facebook';
+    state.title = title + ' | Larabook';
     document.title = state.title;
   }
 };

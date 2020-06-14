@@ -15,11 +15,16 @@
 <script>
 import Nav from './Nav';
 import Sidebar from './Sidebar';
+import { mapGetters } from 'vuex';
 export default {
     name: "App",
 
     components: {
-        Nav, Sidebar
+        Nav, Sidebar,
+    },
+    
+    created() {
+        this.$store.dispatch('setPageTitle', this.$route.meta.title);
     },
 
     mounted() {
