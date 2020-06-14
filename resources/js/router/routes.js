@@ -11,11 +11,13 @@ export default new VueRouter({
             path: '/',
             name: 'home',
             component: NewsFeed,
+            meta: { title: 'Akış' }
         },
         {
             path: '/users/:userId', 
             name: 'user.show', 
             component: UserShow,
+            meta: { title: 'Profil' }
         },
         // {
         //     path: '/posts/:userId',
