@@ -2,19 +2,19 @@
     <div class="bg-white w-2/3 rounded-md mt-6 shadow overflow-hidden">
         <div id="post-top" class="flex items-center p-4">
             <div>
-                <img src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png" alt="post-image" class="w-10 h-10 object-cover rounded-full border-2 border-blue-600">
+                <img src="https://i.pravatar.cc/200" alt="post-image" class="w-10 h-10 object-cover rounded-full border-2 border-blue-600">
             </div>
             <div class="px-2 flex flex-col justify-center">
                 <div> {{ posted_by }} </div>
-                <div class="text-sm text-gray-500"> {{ posted_on }}</div>
+                <div class="text-sm text-gray-500"> {{ posted_at }}</div>
             </div>
         </div>
         <div id="post-body" class="w-full">
             <div class="mb-2 pl-4">
                 <p> {{ description }} </p>
             </div>
-            <div id="post-photo">
-                <img src="https://www.markaev.com/Uploads/UrunResimleri/buyuk/a-post-ithal-beyaz-pelusmarkaevpost--pel-39ad.jpg" alt="post-image" 
+            <div v-if="image" id="post-photo">
+                <img :src="image" alt="post-image" 
                     class="">
             </div>
         </div>
@@ -50,10 +50,26 @@
 <script>
 export default {
     props: [
-        'description', 
-        'posted_by',
-        'posted_on',
+        'post',
     ],
+
+    data() {
+        return {
+            attributes: null,
+            posted_by: null,
+            posted_at: null,
+            description: null,
+            image: null,
+        }
+    },
+
+    created() {
+        this.attributes = this.post.data.attributes;
+        this.posted_by = this.attributes.posted_by.data.attributes.name;
+        this.posted_at = this.attributes.posted_at;
+        this.description = this.attributes.body;
+        this.image = this.attributes.image;
+    },
 
 }
 </script>

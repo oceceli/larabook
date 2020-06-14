@@ -1,10 +1,11 @@
 <template>
     <div class="flex flex-col items-center py-4">
         <NewPost />
-        <Post v-for="(post, index) in posts.data" :key="index" 
-            :description="post.data.attributes.body"
-            :posted_by="post.data.attributes.posted_by.data.attributes.name"
-            :posted_on="post.data.attributes.posted_on" />
+        <p v-if="loading">Yükleniyor...</p>
+        <Post v-else v-for="post in posts.data" 
+            :key="post.data.post_id" 
+            :post="post"
+        />
     </div>
 </template>
 
@@ -20,6 +21,7 @@ export default {
     data() {
         return {
             posts: null,
+            loading: true,
         }
     },
 
@@ -30,6 +32,9 @@ export default {
             })
             .catch(error => {
                 console.log('Veri çekilirken bir hata oluştu: ' + error);
+            })
+            .finally(res => {
+                this.loading = false;
             });
     },
     

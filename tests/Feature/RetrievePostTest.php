@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -31,6 +32,8 @@ class RetrievePostTest extends TestCase
                             'post_id' => $posts->last()->id,
                             'attributes' => [
                                 'body' => $posts->last()->body,
+                                'posted_at' => Carbon::parse($posts->first()->created_at)->diffForHumans(),
+                                'image' => $posts->last()->image,
                             ]
                         ],
                     ],
@@ -40,6 +43,8 @@ class RetrievePostTest extends TestCase
                             'post_id' => $posts->first()->id,
                             'attributes' => [
                                 'body' => $posts->first()->body,
+                                'posted_at' => Carbon::parse($posts->last()->created_at)->diffForHumans(),
+                                'image' => $posts->first()->image,
                             ]
                         ],
                     ],

@@ -18,8 +18,9 @@ class Post extends JsonResource
                 'post_id' => $this->id,
                 'attributes' => [
                     'body' => $this->body,
-                    'posted_by' => new UserResource($this->user),
-                    'posted_on' => Carbon::parse($this->created_at)->diffForHumans(),
+                    'posted_by' => new User($this->user),
+                    'image' => $this->image,
+                    'posted_at' => $this->created_at->diffForHumans(),
                 ],
             ],
             'links' => [
