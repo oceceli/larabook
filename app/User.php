@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return url('/users/' . $this->id);
     }
+
+    public function friends()
+    {
+        return $this->belongsToMany(User::class, 'friends', 'friend_id', 'user_id');
+    }
 }

@@ -16,6 +16,7 @@
 import Nav from './Nav';
 import Sidebar from './Sidebar';
 import { mapGetters } from 'vuex';
+
 export default {
     name: "App",
 
